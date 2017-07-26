@@ -24,5 +24,8 @@ edr_flow_df.show()
 edr_http_df.printSchema()
 edr_http_df.show()
 
+innerBad = edr_flow_df.join(edr_http_df, edr_flow_df.tac == edr_http_df.tac).select(edr_flow_df.download_bytes,edr_flow_df.tac, edr_http_df.transaction_downlink_bytes)
+innerBad.show()
+#.groupBy(department.name, "gender").agg({"salary": "avg", "age": "max"})
 
 sc.stop()
